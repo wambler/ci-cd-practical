@@ -1,6 +1,6 @@
 import React from 'react';
 //import { shallow } from 'enzyme';
-import Counter from './Counter';
+import Counter from './counter.js';
 
 const getCounter = counterWrapper => counterWrapper.find('.Counter');
 const getCountMessage = counterWrapper => getCounter(counterWrapper).find('.Counter-Count');
