@@ -1,10 +1,13 @@
 import React from 'react';
-//import { shallow } from 'enzyme';
+import { configure, shallow } from 'enzyme';
 import Counter from './counter.js';
+import Adapter from 'enzyme-adapter-react-16';
 
 const getCounter = counterWrapper => counterWrapper.find('.Counter');
 const getCountMessage = counterWrapper => getCounter(counterWrapper).find('.Counter-Count');
 const getIncrementButton = counterWrapper => getCounter(counterWrapper).find('.Counter-Button.Counter-Increment');
+
+configure({adapter: new Adapter()});
 
 it('renders without crashing', () => {
   shallow(<Counter />);
@@ -13,18 +16,20 @@ it('renders without crashing', () => {
 describe('initial state', () => {
   it('renders a default count message, with a count of 0', () => {
     const counter = shallow(<Counter />);
-
+    
     // TODO: the following expectation is incorrect. The expected result should be: "You clicked 0 times".
     expect(getCountMessage(counter).text()).toBe('You clicked 0 times');
   });
 
   it('renders a button', () => {
     const counter = shallow(<Counter />);
+    
     expect(getIncrementButton(counter).exists()).toBe(true);
   });
 
   it('renders a button with text "Increment"', () => {
     const counter = shallow(<Counter />);
+
     expect(getIncrementButton(counter).text()).toBe('Increment');
   });
 });
