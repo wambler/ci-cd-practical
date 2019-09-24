@@ -92,3 +92,11 @@ workflows:
      - ui_and_performance_testing:
          requires:
           - deploy_to_staging
+     - hold_production_deploy:
+        type: approval
+        requires:
+          - performance_test
+          - ui_test
+        filters:
+          branches:
+            only: master
