@@ -12,7 +12,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "e2e": "cross-env JEST_JUNIT_OUTPUT=\"./test-results/acceptance/results.xml\" cross-env BASE_URL=\"'https://ci-cd-practical-will-development.surge.sh'\" jest -c src/Test/e2e/jestConfig.json --runInBand"
+    "e2e": "cross-env JEST_JUNIT_OUTPUT=\"./test-results/acceptance/results.xml\" cross-env BASE_URL=\"'https://ci-cd-practical-will-development.surge.sh'\" jest -c src/Test/e2e/jestConfig.json --runInBand",
+    "performance": "lighthouse https://ci-cd-practical-will-development.surge.sh --chrome-flags=\"--headless\" --output json --output html --output-path=./ci-cd-practical && node ./scripts/verify-performance-results.js ci-cd-practical.report.json"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,6 +36,7 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.4.0",
     "jest-junit": "8.0.0",
+    "lighthouse": "5.4.0",
     "puppeteer": "1.20.0",
     "surge": "^0.21.3"
   }
