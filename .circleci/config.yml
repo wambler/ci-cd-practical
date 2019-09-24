@@ -35,6 +35,7 @@ jobs:
 
       # run tests!
       - run: yarn test
+      - run: yarn e2e 
       
   deploy_to_staging:
    docker:

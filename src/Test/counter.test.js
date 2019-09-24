@@ -1,6 +1,6 @@
 import React from 'react';
 import { configure, shallow } from 'enzyme';
-import Counter from './counter.js';
+import Counter from '../counter.js';
 import Adapter from 'enzyme-adapter-react-16';
 
 const getCounter = counterWrapper => counterWrapper.find('.Counter');
