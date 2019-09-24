@@ -55,8 +55,15 @@ jobs:
     steps:
       - run: yarn install
       - run: yarn e2e
-      - run: yarn performance 
-
+      - run: yarn performance
+      - run:
+        name: Store Performance Test Results
+        command: | 
+        mkdir -p /tmp/perf_results
+        cp *.report.* /tmp/perf_results
+        - store_artifacts:
+          path: /tmp/perf_results
+          
 workflows:
  version: 2
  build_test_deploy:
