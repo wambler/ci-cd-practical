@@ -98,7 +98,10 @@ workflows:
          filters:
           branches:
            only: master
-     - ui_and_performance_testing:
+     - ui_testing:
+         requires:
+          - deploy_to_staging
+     - performance_testing:
          requires:
           - deploy_to_staging
      - hold_production_deploy:
