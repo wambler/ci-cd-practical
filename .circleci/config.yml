@@ -50,9 +50,8 @@ jobs:
    steps:
     - attach_workspace:
         at: ./
-     #- checkout
-     #- run: yarn install
-     #- run: yarn build
+
+    - run: yarn build
     - run: npm install surge
     - run: npx surge build/ https://ci-cd-practical-will-development.surge.sh
 
@@ -70,7 +69,6 @@ jobs:
       - attach_workspace:
           at: ./
 
-      - run: yarn install
       - run: yarn e2e
       - run: yarn performance
       #- run:
