@@ -65,9 +65,9 @@ workflows:
      - deploy_to_staging:
          requires:
            - build_and_test
+         filters:
+          branches:
+           only: master
      - ui_and_performance_testing:
          requires:
-           - deploy_to_staging
-          filters:
-            branches:
-             only: master
+          - deploy_to_staging
