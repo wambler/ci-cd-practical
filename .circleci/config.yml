@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - attach_workspace:
-        at: ./
+          at: ./
       
       #- checkout
 
@@ -41,8 +41,8 @@ jobs:
 
       # Persist
       - persist_to_workspace:
-        root: ./
-        paths:
+          root: ./
+          paths:
             - ./
 
 
@@ -61,8 +61,8 @@ jobs:
 
       # Persist
       - persist_to_workspace:
-        root: ./
-        paths:
+          root: ./
+          paths:
             - ./
 
   ui_and_performance_testing:
@@ -71,7 +71,7 @@ jobs:
     working_directory: ~/repo
     steps:
       - attach_workspace:
-        at: ./
+          at: ./
 
       - run: yarn install
       - run: yarn e2e
