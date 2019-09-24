@@ -70,12 +70,6 @@ jobs:
           at: ./
 
       - run: yarn e2e
-      
-      # Persist
-      - persist_to_workspace:
-        root: ./
-        paths:
-          - ./
 
   performance_testing:
     docker:
