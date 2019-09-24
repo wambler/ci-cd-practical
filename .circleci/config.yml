@@ -59,7 +59,7 @@ jobs:
     - persist_to_workspace:
         root: ./
         paths:
-          - ./
+          - dist
 
   ui_testing:
     docker:
@@ -75,7 +75,7 @@ jobs:
       - persist_to_workspace:
         root: ./
         paths:
-          - ./
+          - dist
 
   performance_testing:
     docker:
