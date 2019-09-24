@@ -61,7 +61,7 @@ jobs:
         paths:
           - ./
 
-  ui_and_performance_testing:
+  ui_testing:
     docker:
       - image: circleci/node:10.16.2-browsers
     working_directory: ~/repo
@@ -70,13 +70,22 @@ jobs:
           at: ./
 
       - run: yarn e2e
+      
+      # Persist
+      - persist_to_workspace:
+        root: ./
+        paths:
+          - ./
+
+  performance_testing:
+    docker:
+      - image: circleci/node:10.16.2-browsers
+    working_directory: ~/repo
+    steps:
+      - attach_workspace:
+          at: ./
+
       - run: yarn performance
-      #- run:
-       # name: Store Performance Test Results
-        #command: | 
-        #mkdir -p /tmp/perf_results cp *.report.* /tmp/perf_results
-        #- store_artifacts:
-        #  path: /tmp/perf_results
 
 workflows:
  version: 2
@@ -95,8 +104,8 @@ workflows:
      - hold_production_deploy:
         type: approval
         requires:
-          - performance_test
-          - ui_test
+          - ui_testing
+          - performance_testing
         filters:
           branches:
             only: master
