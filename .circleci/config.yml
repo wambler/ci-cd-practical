@@ -56,14 +56,14 @@ jobs:
      #- checkout
      #- run: yarn install
      #- run: yarn build
-     - run: npm install surge
-     - run: npx surge build/ https://ci-cd-practical-will-development.surge.sh
+    - run: npm install surge
+    - run: npx surge build/ https://ci-cd-practical-will-development.surge.sh
 
-      # Persist
-      - persist_to_workspace:
-          root: ./
-          paths:
-            - ./
+    # Persist
+    - persist_to_workspace:
+        root: ./
+        paths:
+          - ./
 
   ui_and_performance_testing:
     docker:
